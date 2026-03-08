@@ -5,7 +5,7 @@ dotenvConfig({ path: '.env' });
 
 export const CONFIGURATION = {
   HOST: process.env.DB_HOST || 'localhost',
-  PORT: Number(process.env.DB_PORT) || 5432,
+  PORT: Number(process.env.DB_PORT) || 5439,
   USERNAME: process.env.DB_USER || 'admin',
   PASSWORD: process.env.DB_PASSWORD || 'admin',
   DATABASE: process.env.DB_NAME || 'ordermanager_db',

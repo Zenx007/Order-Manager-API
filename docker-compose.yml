@@ -7,17 +7,15 @@ services:
     restart: always
     ports:
       - "3000:3000"
-    env_file:
-      - .env
     environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - DB_HOST=postgres_db
-      - DB_PORT=5432
-      - DB_USER=admin
-      - DB_PASSWORD=admin
-      - DB_NAME=ordermanager_db
-      - JWT_SECRET=${JWT_SECRET}
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=${PORT:-3000}
+      - DB_HOST=${DB_HOST:-postgres_db}
+      - DB_PORT=5439
+      - DB_USER=${DB_USER:-admin}
+      - DB_PASSWORD=${DB_PASSWORD:-admin}
+      - DB_NAME=${DB_NAME:-ordermanager_db}
+      - JWT_SECRET=${JWT_SECRET:-f3f7e1b5b0e5d4a3c2b1a0f9e8d7c6b5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d1}
     depends_on:
       postgres_db:
         condition: service_healthy
@@ -28,14 +26,15 @@ services:
     image: postgres:15-alpine
     container_name: ordermanager_postgres
     restart: always
+    command: -p 5439
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: ordermanager_db
     ports:
-      - "5432:5432"
+      - "5439:5439"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d ordermanager_db"]
+      test: ["CMD-SHELL", "pg_isready -p 5439 -U admin -d ordermanager_db"]
       interval: 5s
       timeout: 5s
       retries: 10
