@@ -1,0 +1,55 @@
+# dependencies
+/node_modules
+
+# build
+/dist
+/build
+*.tsbuildinfo
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# tests
+/coverage
+/.nyc_output
+
+# environment variables
+.env
+.env.*
+
+# runtime
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# cache
+.eslintcache
+.stylelintcache
+.npm
+
+# temp
+.temp
+.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE
+.idea
+.project
+.classpath
+.settings/
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
